@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NormalThread", "ConsoleApp1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadSynchronization", "ThreadSynchronization\ThreadSynchronization.csproj", "{A246A7CA-CF71-46B4-B34F-2B767170BA9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicThreadPoolProject", "BasicThreadPoolProject\BasicThreadPoolProject.csproj", "{4FF77A0C-9DBE-447D-97DB-76A51B904958}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A246A7CA-CF71-46B4-B34F-2B767170BA9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A246A7CA-CF71-46B4-B34F-2B767170BA9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A246A7CA-CF71-46B4-B34F-2B767170BA9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FF77A0C-9DBE-447D-97DB-76A51B904958}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FF77A0C-9DBE-447D-97DB-76A51B904958}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FF77A0C-9DBE-447D-97DB-76A51B904958}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FF77A0C-9DBE-447D-97DB-76A51B904958}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
