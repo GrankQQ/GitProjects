@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadSynchronization", "Th
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicThreadPoolProject", "BasicThreadPoolProject\BasicThreadPoolProject.csproj", "{4FF77A0C-9DBE-447D-97DB-76A51B904958}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskParallelLibraryProject", "TaskParallelLibraryProject\TaskParallelLibraryProject.csproj", "{C668707C-4024-4B07-9052-072A496168D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4FF77A0C-9DBE-447D-97DB-76A51B904958}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FF77A0C-9DBE-447D-97DB-76A51B904958}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FF77A0C-9DBE-447D-97DB-76A51B904958}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C668707C-4024-4B07-9052-072A496168D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C668707C-4024-4B07-9052-072A496168D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C668707C-4024-4B07-9052-072A496168D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C668707C-4024-4B07-9052-072A496168D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
