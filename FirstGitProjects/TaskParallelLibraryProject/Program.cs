@@ -196,6 +196,7 @@ namespace TaskParallelLibraryProject
 
             #region 4.7 实现取消选项
 
+            /*
             var cts = new CancellationTokenSource();
             var longTask = new Task<int>(() => TaskMethodForCancel("Task 1", 10, cts.Token), cts.Token);
             Console.WriteLine(longTask.Status);
@@ -218,9 +219,106 @@ namespace TaskParallelLibraryProject
             }
 
             Console.WriteLine("A task has been completed with result {0}.", longTask.Result);
+            */
 
             #endregion
 
+            #region 4.8 处理异常
+
+            /*
+            Task<int> task;
+            try
+            {
+                task = Task.Run(() => TaskMethodException("Task 1", 2));
+                int result = task.Result;
+                Console.WriteLine("Result: {0}", result);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Exception caught: {0}", ex);
+            }
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine();
+
+            try
+            {
+                task = Task.Run(() => TaskMethodException("Task 2",2));
+                int result = task.GetAwaiter().GetResult();
+                Console.WriteLine("Result: {0}", result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception caught: {0}", ex);
+            }
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine();
+
+            var t1 = new Task<int>(() => TaskMethodException("Task 3", 3));
+            var t2 = new Task<int>(() => TaskMethodException("Task 4", 2));
+            var complexTask = Task.WhenAll(t1, t2);
+            var exceptionHandler = complexTask.ContinueWith(t => Console.WriteLine("Exception caught: {0}", t.Exception), TaskContinuationOptions.OnlyOnFaulted);
+            t1.Start();
+            t2.Start();
+
+            Thread.Sleep(TimeSpan.FromSeconds(50));
+            */
+
+            #endregion
+
+            #region 4.9 并行运行任务
+
+            /*
+            var firstTask = new Task<int>(() => TaskMethodParrellel("First Task", 3));
+            var secondsTask = new Task<int>(() => TaskMethodParrellel("Second Task", 2));
+            var whenAllTask = Task.WhenAll(firstTask, secondsTask);
+
+            whenAllTask.ContinueWith(t => Console.WriteLine("The first answer is {0}, the second is {1}", t.Result[0], t.Result[1]), TaskContinuationOptions.OnlyOnRanToCompletion);
+
+            firstTask.Start();
+            secondsTask.Start();
+            Thread.Sleep(TimeSpan.FromSeconds(4));
+
+            var tasks = new List<Task<int>>();
+            for(int i = 1; i < 4; i++)
+            {
+                int counter = i;
+                var task = new Task<int>(()=>TaskMethodParrellel(string.Format("Task {0}", counter),counter));
+                tasks.Add(task);
+                task.Start();
+            }
+            while (tasks.Count > 0)
+            {
+                var completedTask = Task.WhenAny(tasks).Result;
+                tasks.Remove(completedTask);
+                Console.WriteLine("A task has been completed with result {0}.", completedTask.Result);
+            }
+
+            Thread.Sleep(TimeSpan.FromSeconds(50));
+            */
+
+            #endregion
+
+            #region 4.10 使用TaskScheduler配置任务的执行
+
+
+
+            #endregion
+
+        }
+
+        static int TaskMethodParrellel(string name,int seconds)
+        {
+            Console.WriteLine("Task {0} is running on a thread id {1}. Is thread pool thread: {2}", name, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
+            Thread.Sleep(TimeSpan.FromSeconds(seconds));            
+            return 42 * seconds;
+        }
+
+        static int TaskMethodException(string name, int seconds)
+        {
+            Console.WriteLine("Task {0} is running on a thread id {1}. Is thread pool thread: {2}", name,Thread.CurrentThread.ManagedThreadId,Thread.CurrentThread.IsThreadPoolThread);
+            Thread.Sleep(TimeSpan.FromSeconds(seconds));
+            throw new Exception("Boom!");
+            return 42 * seconds;
         }
 
         private static int TaskMethodForCancel(string name, int seconds, CancellationToken token)
