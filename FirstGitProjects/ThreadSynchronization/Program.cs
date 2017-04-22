@@ -19,7 +19,7 @@ namespace ThreadSynchronization
 
         static void Main(string[] args)
         {
-            #region 2.2.2 InterLock 加减原子操作
+            #region 2.2 InterLock 加减原子操作
 
             /*
             Console.WriteLine("Incorrect counter");
@@ -57,7 +57,7 @@ namespace ThreadSynchronization
 
             #endregion
 
-            #region 2.3.2 Muex互斥量
+            #region 2.3 Muex互斥量
 
             /*当主程序启动时，定义一个指定名称的互斥量，设置initialOwner标志为false。意味着，如果互斥量被创建，则允许程序获取该互斥量。如果没有获取到互斥量，则走else.
              *Mutex互斥量是全局的操作系统对象！可用于在不同的程序中同步线程。
@@ -83,7 +83,7 @@ namespace ThreadSynchronization
 
             #endregion
 
-            #region 2.4.2 SemaphoreSlime 限制了同时访问同一个资源的线程数量
+            #region 2.4 SemaphoreSlime 限制了同时访问同一个资源的线程数量
 
             /*
             //SemaphoreSlime 限制了同一个资源的线程数量，如果超过，则需要等待 ，需要SemaphoreSlime.Wait配合           
@@ -100,7 +100,7 @@ namespace ThreadSynchronization
 
             #endregion
 
-            #region 2.5.2 AutoResetEvent
+            #region 2.5 AutoResetEvent
 
             /* 当主程序启动时，定义了两个AutoResetEvent实例。其中一个是从子线程向主线程发信号，另一个实例是从主线程向子线程发信号。我们向AutoResetEvent构造方法传入false，定义了这两个实例的初始状态为unsingaled。
              * 这意味着任何线程调用这两个对象中的任何一个的WaitOne方法将会被阻塞，直到我们调用了Set方法。如果初始事件状态为true，那么AutoResetEvent实例的状态为signaled，如果线程调用WaitOne方法则会被立即处理。
@@ -122,7 +122,7 @@ namespace ThreadSynchronization
 
             #endregion
 
-            #region 2.6.2 ManualResetEventSlim 整个工作方式有点像人群通过大门
+            #region 2.6 ManualResetEventSlim 整个工作方式有点像人群通过大门
 
             /* ManualResetEventSlim的整个工作方式有点像人群通过大门。一直保持大门敞开直到手动调用Reset方法。
              * 当调用Set时，相当于打开了大门从而允许准备好的线程接收信号并继续工作
@@ -150,7 +150,7 @@ namespace ThreadSynchronization
 
             #endregion
 
-            #region 2.7.2 CountDownEvent 可以调用多个线程，并且等待返回信号，如果有线程没有返回信号，则会继续等待
+            #region 2.7 CountDownEvent 可以调用多个线程，并且等待返回信号，如果有线程没有返回信号，则会继续等待
 
             /*
             Console.WriteLine("Starting two operations");
@@ -165,7 +165,7 @@ namespace ThreadSynchronization
 
             #endregion
 
-            #region 2.8.2 Barrier 用于组织多个线程及时在某个时刻碰面 多线程迭代计算时非常有用，可以在每个迭代结束前执行一些计算
+            #region 2.8 Barrier 用于组织多个线程及时在某个时刻碰面 多线程迭代计算时非常有用，可以在每个迭代结束前执行一些计算
 
             /*
             var t1 = new Thread(() => PlayMusic("the guitarist", "play an amazing solo",5));
@@ -176,7 +176,7 @@ namespace ThreadSynchronization
 
             #endregion
 
-            #region 2.9.2 ReaderWriterLockSlim 允许多个线程同时读取，以及独占写
+            #region 2.9 ReaderWriterLockSlim 允许多个线程同时读取，以及独占写
 
             /*
             new Thread(Read) { IsBackground = true }.Start();
@@ -191,7 +191,7 @@ namespace ThreadSynchronization
 
             #endregion
 
-            #region 2.10.2 SpinWait 用户模式使线程等待
+            #region 2.10 SpinWait 用户模式使线程等待
 
             var t1 = new Thread(UserModeWait);
             var t2 = new Thread(HybridSpinWait);
