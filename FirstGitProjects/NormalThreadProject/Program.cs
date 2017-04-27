@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace NormalThreadProject
 {
     class Program
     {
@@ -184,7 +188,7 @@ namespace ConsoleApp1
                 t = new Thread(BadFaultyThread);
                 t.Start();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("We won't get here!");
             }
@@ -209,9 +213,9 @@ namespace ConsoleApp1
                 Thread.Sleep(TimeSpan.FromSeconds(1));
                 throw new Exception("Boom!");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine("Exception handled: {0}",ex.Message);
+                Console.WriteLine("Exception handled: {0}", ex.Message);
             }
         }
 
@@ -226,14 +230,14 @@ namespace ConsoleApp1
 
         static void TestCounter(CounterBase c)
         {
-            for(int i = 0; i < 100000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 c.Increment();
                 c.Decrement();
             }
         }
 
-        class Counter: CounterBase
+        class Counter : CounterBase
         {
             public int Count { get; private set; }
             public override void Increment()
@@ -283,7 +287,7 @@ namespace ConsoleApp1
 
         static void CountNumbers(int iterations)
         {
-            for(int i = 1; i <= iterations; i++)
+            for (int i = 1; i <= iterations; i++)
             {
                 Thread.Sleep(TimeSpan.FromSeconds(0.5));
                 Console.WriteLine("{0} prints {1}", Thread.CurrentThread.Name, i);
@@ -305,7 +309,7 @@ namespace ConsoleApp1
             }
             public void CountNumbers()
             {
-                for(int i = 1; i < _iterations; i++)
+                for (int i = 1; i < _iterations; i++)
                 {
                     Thread.Sleep(TimeSpan.FromSeconds(0.5));
                     Console.WriteLine("{0} prints {1}", Thread.CurrentThread.Name, i);
@@ -323,10 +327,10 @@ namespace ConsoleApp1
             }
             public void CountNumbers()
             {
-                for(int i = 0; i < _iterations; i++)
+                for (int i = 0; i < _iterations; i++)
                 {
                     Thread.Sleep(TimeSpan.FromSeconds(0.5));
-                    Console.WriteLine("{0} prints {1}",Thread.CurrentThread.Name, i);
+                    Console.WriteLine("{0} prints {1}", Thread.CurrentThread.Name, i);
                 }
             }
 
